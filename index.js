@@ -18,6 +18,7 @@ const menu = [
 ];
 
 async function execMenu() {
+    console.log('Welkom bij de S3 bucket manager');
     const menuChoice = readline.keyInSelect(menu, 'Maak een keuze: ', {cancel: 'Stop'});
 
     switch (menuChoice) {
@@ -87,8 +88,8 @@ async function deleteBucket() {
     const bucketIndex = readline.keyInSelect(buckets, 'Kies een bucket: ');
 
     try {
-        const data = await s3.deleteBucket({Bucket: buckets[bucketIndex]}).promise()
-        console.log(data);
+        await s3.deleteBucket({Bucket: buckets[bucketIndex]}).promise()
+        console.log('Bucket verwijderd');
     } catch (err) {
         console.log(err);
     }
